@@ -1,18 +1,28 @@
 import { Routes, Route } from "react-router-dom";
-import { Layout } from "./components/Shared/Layout";
-import { Home } from "./pages/Home";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
-import { Contacts } from "./pages/Contacts";
+import Layout from "./components/Layout/Layout";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import ContactsPage from "../src/pages/ContactsPage";
+import LoginPage from "../src/pages/LoginPage";
+import RegistrationPage from "../src/pages/RegistrationPage";
 
-export const App = () => {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="contacts" element={<Contacts />} />
+        <Route index element={<h1>Welcome</h1>} />
+        <Route
+          path="contacts"
+          element={<PrivateRoute component={ContactsPage} />}
+        />
+        <Route
+          path="login"
+          element={<RestrictedRoute component={LoginPage} />}
+        />
+        <Route
+          path="register"
+          element={<RestrictedRoute component={RegistrationPage} />}
+        />
       </Route>
     </Routes>
   );

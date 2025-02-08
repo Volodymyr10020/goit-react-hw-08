@@ -8,6 +8,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/users/signup", credentials);
+      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -20,6 +21,7 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/users/login", credentials);
+      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -30,6 +32,7 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     await axios.post("/users/logout");
+    axios.defaults.headers.common.Authorization = "";
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -45,9 +48,8 @@ export const refreshUser = createAsyncThunk(
       return thunkAPI.rejectWithValue("Unable to fetch user");
     }
 
-    axios.defaults.headers.common.Authorization = `Bearer ${persistedToken}`;
-
     try {
+      axios.defaults.headers.common.Authorization = `Bearer ${persistedToken}`;
       const { data } = await axios.get("/users/current");
       return data;
     } catch (error) {
