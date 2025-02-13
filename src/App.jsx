@@ -33,24 +33,21 @@ function App() {
           element={
             <RestrictedRoute
               redirectTo="/dashboard"
-              component={<RegistrationPage />}
+              component={RegistrationPage}
             />
           }
         />
         <Route
           path="login"
           element={
-            <RestrictedRoute
-              redirectTo="/dashboard"
-              component={<LoginPage />}
-            />
+            <RestrictedRoute redirectTo="/dashboard" component={LoginPage} />
           }
         />
 
         <Route
           path="dashboard"
           element={
-            <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
+            <PrivateRoute redirectTo="/login" component={DashboardPage} />
           }
         />
       </Route>

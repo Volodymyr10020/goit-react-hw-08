@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/auth/operations";
+import { logIn } from "../../redux/auth/operations";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
