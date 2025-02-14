@@ -10,6 +10,7 @@ import HomePage from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import DashboardPage from "./pages/DashboardPage";
+import ContactsPage from "./pages/ContactsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,12 @@ function App() {
           path="dashboard"
           element={
             <PrivateRoute redirectTo="/login" component={DashboardPage} />
+          }
+        />
+        <Route
+          path="contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={ContactsPage} />
           }
         />
       </Route>

@@ -9,7 +9,7 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(logIn({ email, password }));
+    dispatch(login({ email, password }));
   };
 
   return (
