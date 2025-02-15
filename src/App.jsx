@@ -25,40 +25,38 @@ function App() {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-
+    <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route
           path="register"
           element={
             <RestrictedRoute
               redirectTo="/dashboard"
-              component={RegistrationPage}
+              element={<RegistrationPage />}
             />
           }
         />
         <Route
           path="login"
           element={
-            <RestrictedRoute redirectTo="/dashboard" component={LoginPage} />
+            <RestrictedRoute redirectTo="/dashboard" element={<LoginPage />} />
           }
         />
-
         <Route
           path="dashboard"
           element={
-            <PrivateRoute redirectTo="/login" component={DashboardPage} />
+            <PrivateRoute redirectTo="/login" element={<DashboardPage />} />
           }
         />
         <Route
           path="contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={ContactsPage} />
+            <PrivateRoute redirectTo="/login" element={<ContactsPage />} />
           }
         />
-      </Route>
-    </Routes>
+      </Routes>
+    </Layout>
   );
 }
 

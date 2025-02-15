@@ -17,14 +17,19 @@ const LoginForm = () => {
       <input
         type="email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
         placeholder="Email"
         required
       />
+
       <input
         type="password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
         placeholder="Password"
         required
       />
