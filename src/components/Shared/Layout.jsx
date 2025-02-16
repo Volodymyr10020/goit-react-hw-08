@@ -1,12 +1,10 @@
 import { Navigation } from "./Navigation";
 
-export const Layout = () => {
+export const Layout = ({ children }) => {
   return (
     <div>
       <Navigation />
-      <main>
-        <main>{children}</main>
-      </main>
+      <main>{children}</main>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
-import HomePage from "./pages/Home";
+import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import DashboardPage from "./pages/DashboardPage";
@@ -27,32 +27,37 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home />} />
         <Route
           path="register"
           element={
-            <RestrictedRoute
-              redirectTo="/dashboard"
-              element={<RegistrationPage />}
-            />
+            <RestrictedRoute redirectTo="/dashboard">
+              <RegistrationPage />
+            </RestrictedRoute>
           }
         />
         <Route
           path="login"
           element={
-            <RestrictedRoute redirectTo="/dashboard" element={<LoginPage />} />
+            <RestrictedRoute redirectTo="/dashboard">
+              <LoginPage />
+            </RestrictedRoute>
           }
         />
         <Route
           path="dashboard"
           element={
-            <PrivateRoute redirectTo="/login" element={<DashboardPage />} />
+            <PrivateRoute redirectTo="/login">
+              <DashboardPage />
+            </PrivateRoute>
           }
         />
         <Route
           path="contacts"
           element={
-            <PrivateRoute redirectTo="/login" element={<ContactsPage />} />
+            <PrivateRoute redirectTo="/login">
+              <ContactsPage />
+            </PrivateRoute>
           }
         />
       </Routes>
